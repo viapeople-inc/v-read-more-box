@@ -1,6 +1,10 @@
 # v-read-more-box
 Vue component - content is clipped at specified height, with an automatic "read more"/"read less" controls.
 
+To install:
+
+```npm install v-read-more-box --save```
+
 You can wrap your content in ```<v-read-more-box>``` tag. The content will get clipped at ```max-height``` content. The user can click anywhere on the box to show the whole content, and click the "Read Less" control to collapse back.
 
 You can pass options via directives:
