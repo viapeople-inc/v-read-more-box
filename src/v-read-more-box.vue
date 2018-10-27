@@ -4,10 +4,14 @@
       <slot></slot>
     </div>
     <div class='expandControl readControlWrapper' v-if="isOverFlow" v-show="!expanded"  :style="getExpanderStyle">
-      <span class='readMore readControl'>{{readMore}}</span>
+      <slot name="readMore">
+        <span class='readMore readControl'>{{readMore}}</span>
+      </slot>
     </div>
     <div class='contractControl readControlWrapper' v-if="isOverFlow" v-show="expanded" @click.stop="contract">
-      <span class='readLess readControl'>{{readLess}}</span>
+      <slot name="readLess">
+        <span class='readLess readControl'>{{readLess}}</span>
+      </slot>
     </div>
   </div>
 </template>

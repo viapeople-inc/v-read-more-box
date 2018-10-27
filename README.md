@@ -15,6 +15,17 @@ You can pass options via directives:
 * read-more (String) text of the "Read More" control (default "Read More..."). Text only, no HTML, but unicode works.
 * read-less (String)  text of the "Read More" control (default "Read Less..."). Text only, no HTML, but unicode works.
 
+You also have 2 [named slots](https://vuejs.org/v2/guide/components-slots.html#Named-Slots) avaliable for the read more/less controls if you wnat to have more options (e.g. passing in buttons or some other controls, custom HTML, etc.)
+
+Slot syntax:
+```
+<button slot="readMore">Custom Show More Button!</button>
+
+<template slot="readLess">
+    <div>&hellip; Show Less</div>
+</template>
+```
+
 Default sample:
 ```html
  <v-read-more-box>
@@ -29,6 +40,10 @@ All options:
 ```html
 <div style="background-color: black; color: white;">
     <v-read-more-box  max-height="150" bg-color="#000" read-more="Show More!" read-less="Show Less!">
+        <button slot="readMore">Custom read more slot!</button>
+        <template slot="readLess">
+            <div>&hellip; Show Less</div>
+        </template>
         <h1>HTML Ipsum Presents</h1>
         <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em>	Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
     </v-read-more-box>
