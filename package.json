@@ -1,6 +1,6 @@
 {
   "name": "v-read-more-box",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "dist/v-read-more-box.umd.js",
   "module": "dist/v-read-more-box.esm.js",
@@ -10,6 +10,7 @@
   },
   "scripts": {
     "localServe": "vue serve --host localhost --port 8080",
+    "publish": "npm publish",
     "build": "npm run build:unpkg & npm run build:es & npm run build:umd",
     "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/v-read-more-box.umd.js",
     "build:es": "rollup --config build/rollup.config.js --format es --file dist/v-read-more-box.esm.js",

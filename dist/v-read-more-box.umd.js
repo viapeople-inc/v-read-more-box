@@ -19,7 +19,11 @@
 
 
 
-  var component = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"text-left output",style:(_vm.getStyle),on:{"click":function($event){$event.stopPropagation();return _vm.expand($event)}}},[_c('div',{staticClass:"content"},[_vm._t("default")],2),_vm._v(" "),(_vm.isOverFlow)?_c('div',{directives:[{name:"show",rawName:"v-show",value:(!_vm.expanded),expression:"!expanded"}],staticClass:"expandControl readControlWrapper",style:(_vm.getExpanderStyle)},[_c('span',{staticClass:"readMore readControl"},[_vm._v(_vm._s(_vm.readMore))])]):_vm._e(),_vm._v(" "),(_vm.isOverFlow)?_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.expanded),expression:"expanded"}],staticClass:"contractControl readControlWrapper",on:{"click":function($event){$event.stopPropagation();return _vm.contract($event)}}},[_c('span',{staticClass:"readLess readControl"},[_vm._v(_vm._s(_vm.readLess))])]):_vm._e()])},staticRenderFns: [],_scopeId: 'data-v-7d5a1206',
+
+
+
+
+  var component = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"text-left output",style:(_vm.getStyle),on:{"click":function($event){$event.stopPropagation();return _vm.expand($event)}}},[_c('div',{staticClass:"content"},[_vm._t("default")],2),_vm._v(" "),(_vm.isOverFlow)?_c('div',{directives:[{name:"show",rawName:"v-show",value:(!_vm.expanded),expression:"!expanded"}],staticClass:"expandControl readControlWrapper",style:(_vm.getExpanderStyle)},[_vm._t("readMore",[_c('span',{staticClass:"readMore readControl"},[_vm._v(_vm._s(_vm.readMore))])])],2):_vm._e(),_vm._v(" "),(_vm.isOverFlow)?_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.expanded),expression:"expanded"}],staticClass:"contractControl readControlWrapper",on:{"click":function($event){$event.stopPropagation();return _vm.contract($event)}}},[_vm._t("readLess",[_c('span',{staticClass:"readLess readControl"},[_vm._v(_vm._s(_vm.readLess))])])],2):_vm._e()])},staticRenderFns: [],_scopeId: 'data-v-7d5a1206',
     props: {
       maxHeight: { type: [Number, String], default: 200 },
       bgColor: { type: String, default: "#FFF" },
@@ -37,7 +41,7 @@
         var styleObject = {
           "max-height": parseInt(this.maxHeight) + 20 + "px",
           "overflow-y": "hidden",
-          cursor: "pointer",
+          cursor: this.isOverFlow ? "pointer" : "auto",
           position: "relative"
         };
 
@@ -73,10 +77,10 @@
       }
     },
     methods: {
-      expand: function expand(evt) {
+      expand: function expand() {
         if (!this.expanded) { this.expanded = true; }
       },
-      contract: function contract(evt) {
+      contract: function contract() {
         if (this.expanded) { this.expanded = false; }
       },
       hexToRGB: function hexToRGB(hex) {
