@@ -9,6 +9,7 @@
     "./sfc": "src/v-read-more-box.vue"
   },
   "scripts": {
+    "localServe": "vue serve --host localhost --port 8080",
     "build": "npm run build:unpkg & npm run build:es & npm run build:umd",
     "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/v-read-more-box.umd.js",
     "build:es": "rollup --config build/rollup.config.js --format es --file dist/v-read-more-box.esm.js",

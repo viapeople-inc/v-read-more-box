@@ -31,7 +31,7 @@ export default {
       let styleObject = {
         "max-height": parseInt(this.maxHeight) + 20 + "px",
         "overflow-y": "hidden",
-        cursor: "pointer",
+        cursor: this.isOverFlow ? "pointer" : "auto",
         position: "relative"
       };
 
@@ -67,10 +67,10 @@ export default {
     }
   },
   methods: {
-    expand(evt) {
+    expand() {
       if (!this.expanded) this.expanded = true;
     },
-    contract(evt) {
+    contract() {
       if (this.expanded) this.expanded = false;
     },
     hexToRGB(hex) {
