@@ -5,6 +5,8 @@ To install:
 
 ```npm install v-read-more-box --save```
 
+Code Sand Box - [Demo](https://codesandbox.io/s/r4qpzy5z24)
+
 You can wrap your content in ```<v-read-more-box>``` tag. The content will get clipped at ```max-height``` content. The user can click anywhere on the box to show the whole content, and click the "Read Less" control to collapse back.
 
 You can pass options via directives:

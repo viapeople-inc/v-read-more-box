@@ -1,6 +1,6 @@
 {
   "name": "v-read-more-box",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "main": "dist/v-read-more-box.umd.js",
   "module": "dist/v-read-more-box.esm.js",
