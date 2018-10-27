@@ -1,5 +1,5 @@
 # v-read-more-box
-Vue component - content is clipped at specified height, with an automatic "read more"/"read less" controls.
+Vue component - content is clipped at specified height, with an automatic "read more"/"read less" controls, as well as, a fade-out.
 
 To install:
 
