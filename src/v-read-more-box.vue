@@ -3,7 +3,7 @@
     <div class='content'>
       <slot></slot>
     </div>
-    <div class='expandControl readControlWrapper' v-if="isOverFlow" v-show="!expanded"  :style="getExpanderStyle">
+    <div class='expandControl readControlWrapper' v-if="isOverFlow" v-show="!expanded" :style="getExpanderStyle">
       <slot name="readMore">
         <span class='readMore readControl'>{{readMore}}</span>
       </slot>
@@ -72,10 +72,30 @@ export default {
   },
   methods: {
     expand() {
-      if (!this.expanded) this.expanded = true;
+      if (!this.expanded) {
+        this.expanded = true;
+        this.$emit("v-read-more-box-expand", {
+          event: "expand",
+          expanded: true
+        });
+        this.$emit("v-read-more-box-change", {
+          event: "change",
+          expanded: true
+        });
+      }
     },
     contract() {
-      if (this.expanded) this.expanded = false;
+      if (this.expanded) {
+        this.expanded = false;
+        this.$emit("v-read-more-box-contract", {
+          event: "contract",
+          expanded: false
+        });
+        this.$emit("v-read-more-box-change", {
+          event: "change",
+          expanded: false
+        });
+      }
     },
     hexToRGB(hex) {
       let r = parseInt(hex.slice(0, 2), 16),

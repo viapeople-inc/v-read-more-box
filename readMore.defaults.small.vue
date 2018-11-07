@@ -16,6 +16,7 @@
 import vReadMoreBox from "./src/v-read-more-box.vue";
 
 export default {
+  // eslint-disable-next-line
   components: { vReadMoreBox }
 };
 </script>

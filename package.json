@@ -1,7 +1,7 @@
 {
   "name": "v-read-more-box",
   "version": "1.0.6",
-  "description": "",
+  "description": "Required 'npm install -g @vue/cli-service-global' to serve the demo",
   "main": "dist/v-read-more-box.umd.js",
   "module": "dist/v-read-more-box.esm.js",
   "unpkg": "dist/v-read-more-box.min.js",
@@ -9,14 +9,16 @@
     "./sfc": "src/v-read-more-box.vue"
   },
   "scripts": {
-    "localServe": "vue serve --host localhost --port 8080",
+    "localServe": "vue serve",
     "publish": "npm publish",
     "build": "npm run build:unpkg & npm run build:es & npm run build:umd",
     "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/v-read-more-box.umd.js",
     "build:es": "rollup --config build/rollup.config.js --format es --file dist/v-read-more-box.esm.js",
     "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/v-read-more-box.min.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@vue/cli-service-global": "^3.1.2"
+  },
   "devDependencies": {
     "minimist": "^1.2.0",
     "rollup": "^0.57.1",

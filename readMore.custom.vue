@@ -1,6 +1,6 @@
 <template>
     <div  class="wrapper">
-        <v-read-more-box max-height="215" bg-color="#000" read-more="Show More!" read-less="Show Less!">
+        <v-read-more-box max-height="215" bg-color="#000" read-more="Show More!" read-less="Show Less!" @v-read-more-box-change="logEvent($event)" @v-read-more-box-expand="logEvent($event)" @v-read-more-box-contract="logEvent($event)">
             <button slot="readMore">Custom read more slot!</button>
             <template slot="readLess">
                 <div>&hellip; Show Less</div>
@@ -46,7 +46,18 @@
 import vReadMoreBox from "./src/v-read-more-box.vue";
 
 export default {
-  components: { vReadMoreBox }
+  // eslint-disable-next-line
+  components: { vReadMoreBox },
+  methods: {
+    logEvent(evt) {
+      // eslint-disable-next-line
+      console.log(evt);
+    },
+    logEventOuter(evt) {
+      // eslint-disable-next-line
+      console.log(evt);
+    }
+  }
 };
 </script>
 
