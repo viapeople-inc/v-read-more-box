@@ -1,5 +1,5 @@
 <template>
-    <div  class="wrapper">
+    <div class="wrapper">
         <v-read-more-box max-height="215" bg-color="#000" read-more="Show More!" read-less="Show Less!" @v-read-more-box-change="logEvent($event)" @v-read-more-box-expand="logEvent($event)" @v-read-more-box-contract="logEvent($event)">
             <button slot="readMore">Custom read more slot!</button>
             <template slot="readLess">

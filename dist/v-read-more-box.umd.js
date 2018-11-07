@@ -78,10 +78,30 @@
     },
     methods: {
       expand: function expand() {
-        if (!this.expanded) { this.expanded = true; }
+        if (!this.expanded) {
+          this.expanded = true;
+          this.$emit("v-read-more-box-expand", {
+            event: "expand",
+            expanded: true
+          });
+          this.$emit("v-read-more-box-change", {
+            event: "change",
+            expanded: true
+          });
+        }
       },
       contract: function contract() {
-        if (this.expanded) { this.expanded = false; }
+        if (this.expanded) {
+          this.expanded = false;
+          this.$emit("v-read-more-box-contract", {
+            event: "contract",
+            expanded: false
+          });
+          this.$emit("v-read-more-box-change", {
+            event: "change",
+            expanded: false
+          });
+        }
       },
       hexToRGB: function hexToRGB(hex) {
         var r = parseInt(hex.slice(0, 2), 16),
