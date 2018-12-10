@@ -1,4 +1,14 @@
-(function(){ if(typeof document !== 'undefined'){ var head=document.head||document.getElementsByTagName('head')[0], style=document.createElement('style'), css=" .readControlWrapper[data-v-7d5a1206] { text-align: center; } .readControl[data-v-7d5a1206] { display: inline-block; padding: 0.25em 0.5em; border-radius: 0.25rem; line-height: 1; text-align: center; white-space: nowrap; vertical-align: baseline; background-color: #ddd; color: black; z-index: 10; } .readMore[data-v-7d5a1206] { margin-top: 14px; } .contractControl[data-v-7d5a1206], .expandControl[data-v-7d5a1206] { width: 100%; height: 40px; cursor: pointer; } .expandControl[data-v-7d5a1206] { position: absolute; } "; style.type='text/css'; if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style); } })();
+(function(){ if(typeof document !== 'undefined'){ var head=document.head||document.getElementsByTagName('head')[0], style=document.createElement('style'), css=" .readControlWrapper[data-v-7d5a1206] { text-align: center; } .readControl[data-v-7d5a1206] { display: inline-block; padding: 0.25em 0.5em; border-radius: 0.25rem; line-height: 1; text-align: center; white-space: nowrap; vertical-align: baseline; background-color: #ddd; color: black; z-index: 10; } .readMore[data-v-7d5a1206] { margin-top: 14px; } .contractControl[data-v-7d5a1206], .expandControl[data-v-7d5a1206] { height: 40px; cursor: pointer; } .expandControl[data-v-7d5a1206] { position: absolute; } "; style.type='text/css'; if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style); } })();
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -22,7 +32,8 @@ var component = {render: function(){var _vm=this;var _h=_vm.$createElement;var _
     maxHeight: { type: [Number, String], default: 200 },
     bgColor: { type: String, default: "#FFF" },
     readMore: { type: String, default: "Read More\u2026" },
-    readLess: { type: String, default: "Read Less\u2026" }
+    readLess: { type: String, default: "Read Less\u2026" },
+    horizontal: { type: Boolean, default: false }
   },
   data: function data() {
     return {
@@ -32,8 +43,11 @@ var component = {render: function(){var _vm=this;var _h=_vm.$createElement;var _
   },
   computed: {
     getStyle: function getStyle() {
+      var maxHeight = parseInt(this.maxHeight);
+      if (!this.horizontal) { maxHeight += 20; }
+
       var styleObject = {
-        "max-height": parseInt(this.maxHeight) + 20 + "px",
+        "max-height": maxHeight + "px",
         "overflow-y": "hidden",
         cursor: this.isOverFlow ? "pointer" : "auto",
         position: "relative"
@@ -52,9 +66,33 @@ var component = {render: function(){var _vm=this;var _h=_vm.$createElement;var _
       return hex;
     },
     getExpanderStyle: function getExpanderStyle() {
+      return this.horizontal
+        ? this.getExpanderStyle_horizontal
+        : this.getExpanderStyle_vertical;
+    },
+    getExpanderStyle_horizontal: function getExpanderStyle_horizontal() {
+      var rgb = this.hexToRGB(this.getCleanHex);
+      return {
+        bottom: "0px",
+        right: "3px",
+        "text-align": "right",
+        "padding-left": "30px",
+        display: "inline-block",
+        background:
+          "linear-gradient(to right, rgba(" +
+          rgb +
+          ",0) 0,rgba(" +
+          rgb +
+          ",1) 15px,rgba(" +
+          rgb +
+          ",1) 30px)"
+      };
+    },
+    getExpanderStyle_vertical: function getExpanderStyle_vertical() {
       var rgb = this.hexToRGB(this.getCleanHex);
       return {
         top: parseInt(this.maxHeight, 10) - 20 + "px",
+        width: "100%",
         background:
           "linear-gradient(to bottom, rgba(" +
           rgb +

@@ -1,5 +1,5 @@
 # v-read-more-box
-Vue component - content is clipped at specified height, with an automatic "read more"/"read less" controls, as well as, a fade-out.
+Vue component - content is clipped at the specified height, with an automatic "read more"/"read less" controls, as well as, a fade-out.
 
 ## To install:
 
@@ -18,13 +18,15 @@ Example:
 ```<v-read-more-box max-height="215" bg-color="#000" read-more="Show More!" read-more="Show Less!">```
 
 Possible options:
-* max-height (int) - max height in pixels, (default 200). Note: actual height of the wrapper box will be slighly larger (+20px)
-* bg-color (hex color value) -  the color of the fadeout gradient on the bottom. Default is white, but if your background is something else you can sid it using this directive. Acceptable values can optionally start with #, and can be the shorthand form (e.g. #CCCCCC, CDCDC, #000, 777).
-* read-more (String) text of the "Read More" control (default "Read More..."). Text only, no HTML, but unicode works.
-* read-less (String)  text of the "Read More" control (default "Read Less..."). Text only, no HTML, but unicode works.
+* max-height (int) - max height in pixels, (default 200). Note: actual height of the wrapper box will be slightly larger (+20px)
+* bg-color (hex color value) -  the color of the fadeout gradient on the bottom. The default is white, but if your background is something else you can set it using this directive. Acceptable values can optionally start with #, and can be the shorthand form (e.g. #CCCCCC, CDCDC, #000, 777).
+* read-more (String) text of the "Read More" control (default "Read More..."). Text only, no HTML, but Unicode escaped characters work.
+* read-less (String)  text of the "Read More" control (default "Read Less..."). Text only, no HTML, but Unicode escaped characters work.
+
+Experimental option: **horizontal** - moves the read more control only to the top right of the box. This is useful if you have a very small max-height (e.g. 1 line). This feature may change, so use at your own risk.
 
 ## Slots:
-You also have 2 [named slots](https://vuejs.org/v2/guide/components-slots.html#Named-Slots) avaliable for the read more/less controls if you wnat to have more options (e.g. passing in buttons or some other controls, custom HTML, etc.)
+You also have 2 [named slots](https://vuejs.org/v2/guide/components-slots.html#Named-Slots) available  for the "read more"/"read less" controls if you want to have more options (e.g. passing in buttons or some other controls, custom HTML, etc.)
 
 Slot syntax:
 ```

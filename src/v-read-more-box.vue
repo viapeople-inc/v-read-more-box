@@ -1,16 +1,26 @@
 <template>
   <div class="text-left output" :style="getStyle" @click.stop="expand">
-    <div class='content'>
+    <div class="content">
       <slot></slot>
     </div>
-    <div class='expandControl readControlWrapper' v-if="isOverFlow" v-show="!expanded" :style="getExpanderStyle">
+    <div
+      class="expandControl readControlWrapper"
+      v-if="isOverFlow"
+      v-show="!expanded"
+      :style="getExpanderStyle"
+    >
       <slot name="readMore">
-        <span class='readMore readControl'>{{readMore}}</span>
+        <span class="readMore readControl">{{readMore}}</span>
       </slot>
     </div>
-    <div class='contractControl readControlWrapper' v-if="isOverFlow" v-show="expanded" @click.stop="contract">
+    <div
+      class="contractControl readControlWrapper"
+      v-if="isOverFlow"
+      v-show="expanded"
+      @click.stop="contract"
+    >
       <slot name="readLess">
-        <span class='readLess readControl'>{{readLess}}</span>
+        <span class="readLess readControl">{{readLess}}</span>
       </slot>
     </div>
   </div>
@@ -22,7 +32,8 @@ export default {
     maxHeight: { type: [Number, String], default: 200 },
     bgColor: { type: String, default: "#FFF" },
     readMore: { type: String, default: "Read More\u2026" },
-    readLess: { type: String, default: "Read Less\u2026" }
+    readLess: { type: String, default: "Read Less\u2026" },
+    horizontal: { type: Boolean, default: false }
   },
   data() {
     return {
@@ -32,8 +43,11 @@ export default {
   },
   computed: {
     getStyle() {
+      var maxHeight = parseInt(this.maxHeight);
+      if (!this.horizontal) maxHeight += 20;
+
       let styleObject = {
-        "max-height": parseInt(this.maxHeight) + 20 + "px",
+        "max-height": maxHeight + "px",
         "overflow-y": "hidden",
         cursor: this.isOverFlow ? "pointer" : "auto",
         position: "relative"
@@ -52,9 +66,33 @@ export default {
       return hex;
     },
     getExpanderStyle() {
+      return this.horizontal
+        ? this.getExpanderStyle_horizontal
+        : this.getExpanderStyle_vertical;
+    },
+    getExpanderStyle_horizontal() {
+      let rgb = this.hexToRGB(this.getCleanHex);
+      return {
+        bottom: "0px",
+        right: "3px",
+        "text-align": "right",
+        "padding-left": "30px",
+        display: "inline-block",
+        background:
+          "linear-gradient(to right, rgba(" +
+          rgb +
+          ",0) 0,rgba(" +
+          rgb +
+          ",1) 15px,rgba(" +
+          rgb +
+          ",1) 30px)"
+      };
+    },
+    getExpanderStyle_vertical() {
       let rgb = this.hexToRGB(this.getCleanHex);
       return {
         top: parseInt(this.maxHeight, 10) - 20 + "px",
+        width: "100%",
         background:
           "linear-gradient(to bottom, rgba(" +
           rgb +
@@ -135,7 +173,6 @@ export default {
 
 .contractControl,
 .expandControl {
-  width: 100%;
   height: 40px;
   cursor: pointer;
 }
