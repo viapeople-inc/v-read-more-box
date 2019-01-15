@@ -41,19 +41,33 @@ var component = {render: function(){var _vm=this;var _h=_vm.$createElement;var _
       expanded: false
     };
   },
+  updated: function updated() {
+    //console.log("content updated");
+    this.checkForOverflow = true;
+  },
   computed: {
     getStyle: function getStyle() {
       var maxHeight = parseInt(this.maxHeight);
       if (!this.horizontal) { maxHeight += 20; }
 
       var styleObject = {
+        //height: maxHeight + "px",
         "max-height": maxHeight + "px",
         "overflow-y": "hidden",
+        //transition: "height 1s",
         cursor: this.isOverFlow ? "pointer" : "auto",
         position: "relative"
       };
 
       return this.expanded ? {} : styleObject;
+      /*//strat of transition code
+      return this.expanded
+        ? {
+            height: this.$el.scrollHeight + 20 + "px",
+            transition: "height 1s"
+          }
+        : styleObject;
+      */
     },
     getCleanHex: function getCleanHex() {
       var hex = this.bgColor;

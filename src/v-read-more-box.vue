@@ -41,12 +41,18 @@ export default {
       expanded: false
     };
   },
+  updated() {
+    //handle slot content changes
+    this.checkForOverflow = true;
+  },
   computed: {
     getStyle() {
       var maxHeight = parseInt(this.maxHeight);
       if (!this.horizontal) maxHeight += 20;
 
       let styleObject = {
+        //height: maxHeight + "px",
+        //transition: "height 1s",
         "max-height": maxHeight + "px",
         "overflow-y": "hidden",
         cursor: this.isOverFlow ? "pointer" : "auto",
@@ -54,6 +60,14 @@ export default {
       };
 
       return this.expanded ? {} : styleObject;
+      /*//start of transition code
+      return this.expanded
+        ? {
+            height: this.$el.scrollHeight + 20 + "px",
+            transition: "height 1s"
+          }
+        : styleObject;
+      */
     },
     getCleanHex() {
       let hex = this.bgColor;
