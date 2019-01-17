@@ -44,12 +44,14 @@
     data: function data() {
       return {
         checkForOverflow: false,
-        expanded: false
+        expanded: false,
+        update: 0
       };
     },
     updated: function updated() {
-      //console.log("content updated");
-      this.checkForOverflow = true;
+      //handle slot content changes
+      //console.log("updated");
+      if (this.update == 1) { this.update++; }
     },
     computed: {
       getStyle: function getStyle() {
@@ -58,15 +60,16 @@
 
         var styleObject = {
           //height: maxHeight + "px",
+          //transition: "height 1s",
           "max-height": maxHeight + "px",
           "overflow-y": "hidden",
-          //transition: "height 1s",
           cursor: this.isOverFlow ? "pointer" : "auto",
-          position: "relative"
+          position: "relative",
+          update: this.update
         };
 
         return this.expanded ? {} : styleObject;
-        /*//strat of transition code
+        /*//start of transition code
         return this.expanded
           ? {
               height: this.$el.scrollHeight + 20 + "px",
@@ -165,6 +168,7 @@
     },
     mounted: function mounted() {
       this.checkForOverflow = true;
+      this.update = 1;
     }
   };
 

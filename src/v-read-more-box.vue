@@ -38,12 +38,14 @@ export default {
   data() {
     return {
       checkForOverflow: false,
-      expanded: false
+      expanded: false,
+      update: 0
     };
   },
   updated() {
     //handle slot content changes
-    this.checkForOverflow = true;
+    //console.log("updated");
+    if (this.update == 1) this.update++;
   },
   computed: {
     getStyle() {
@@ -56,7 +58,8 @@ export default {
         "max-height": maxHeight + "px",
         "overflow-y": "hidden",
         cursor: this.isOverFlow ? "pointer" : "auto",
-        position: "relative"
+        position: "relative",
+        update: this.update
       };
 
       return this.expanded ? {} : styleObject;
@@ -159,6 +162,7 @@ export default {
   },
   mounted() {
     this.checkForOverflow = true;
+    this.update = 1;
   }
 };
 </script>
